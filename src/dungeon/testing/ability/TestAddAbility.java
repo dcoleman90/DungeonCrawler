@@ -98,4 +98,20 @@ class TestAddAbility {
 		assertEquals(-5, abilitys.getSpirit());
 		assertEquals(5, abilitys.getMental());
 	}
+	
+	/**
+	 * This test will check add ability from the default constructor adding negative
+	 * ability should force the ability to stop at 1
+	 */
+	@Test
+	void testDefaultConstructorAddAbilityPassTheLimit() {
+		Ability abilitys = new Ability();
+		abilitys.addSpirit(500);
+		abilitys.addMental(5);
+		abilitys.addPhysical(5);
+		abilitys.addPhysical(-555);
+		assertEquals(-80, abilitys.getPhysical());
+		assertEquals(80, abilitys.getSpirit());
+		assertEquals(5, abilitys.getMental());
+	}
 }

@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import dungeon.model.Ability;
 
 class TestAblityConstructors {
-	
+
 	/**
 	 * This test will check the default constructor Spirit stat should return 0
 	 */
@@ -17,7 +17,7 @@ class TestAblityConstructors {
 		Ability scoreSheet = new Ability();
 		assertEquals(0, scoreSheet.getSpirit());
 	}
-	
+
 	/**
 	 * This test will check the default constructor Mental stat should return 0
 	 */
@@ -26,7 +26,7 @@ class TestAblityConstructors {
 		Ability scoreSheet = new Ability();
 		assertEquals(0, scoreSheet.getMental());
 	}
-	
+
 	/**
 	 * This test will check the default constructor physical stat should return 0
 	 */
@@ -46,7 +46,7 @@ class TestAblityConstructors {
 		assertEquals(1, scoreSheet.getMental());
 		assertEquals(1, scoreSheet.getPhysical());
 	}
-	
+
 	/**
 	 * This test will check the three parameter constructor with stats of 10
 	 */
@@ -57,7 +57,7 @@ class TestAblityConstructors {
 		assertEquals(10, scoreSheet.getMental());
 		assertEquals(10, scoreSheet.getPhysical());
 	}
-	
+
 	/**
 	 * This test will check the three parameter constructor with stats of 5 9 and 8
 	 */
@@ -67,5 +67,17 @@ class TestAblityConstructors {
 		assertEquals(5, scoreSheet.getPhysical());
 		assertEquals(9, scoreSheet.getSpirit());
 		assertEquals(8, scoreSheet.getMental());
+	}
+
+	/**
+	 * This test will insure the three parameter constructor resets values when they
+	 * are above the acceptable limit
+	 */
+	@Test
+	void test3ParamConstructorWhenStatsOutSideAcceptableLimit() {
+		Ability scoreSheet = new Ability(-90, 100, 1000);
+		assertEquals(-80, scoreSheet.getPhysical());
+		assertEquals(80, scoreSheet.getSpirit());
+		assertEquals(80, scoreSheet.getMental());
 	}
 }

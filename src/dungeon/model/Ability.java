@@ -32,9 +32,29 @@ public class Ability {
 	 *            = mental
 	 */
 	public Ability(int acceptedPhysical, int acceptedSpirit, int acceptedMental) {
-		this.physical = acceptedPhysical;
-		this.spirit = acceptedSpirit;
-		this.mental = acceptedMental;
+		if (acceptedPhysical > 80) {
+			this.physical = 80;
+		} else if (acceptedPhysical < -80) {
+			this.physical = -80;
+		} else {
+			this.physical = acceptedPhysical;
+		}
+		
+		if (acceptedSpirit > 80) {
+			this.spirit = 80;
+		} else if (acceptedSpirit < -80) {
+			this.spirit = -80;
+		} else {
+			this.spirit = acceptedSpirit;
+		}
+		
+	if (acceptedMental > 80) {
+			this.mental = 80;
+		} else if (acceptedMental < -80) {
+			this.mental = -80;
+		} else {
+			this.mental = acceptedMental;
+		}
 	}
 
 	//// Getter/Setters and adders which add the accepted value to the corresponding
@@ -48,7 +68,13 @@ public class Ability {
 	}
 
 	public void addPhysical(int addedPhysical) {
-		this.physical += addedPhysical;
+		if (addedPhysical + this.physical > 80) {
+			this.physical = 80;
+		} else if (addedPhysical + this.physical < -80) {
+			this.physical = -80;
+		} else {
+			this.physical += addedPhysical;
+		}
 	}
 
 	public int getSpirit() {
@@ -59,8 +85,14 @@ public class Ability {
 		this.spirit = spirit;
 	}
 
-	public void addSpirit(int acceptedSpirit) {
-		this.spirit += acceptedSpirit;
+	public void addSpirit(int addedSpirit) {
+		if (addedSpirit + this.spirit > 80) {
+			this.spirit = 80;
+		} else if (addedSpirit + this.spirit < -80) {
+			this.spirit = -80;
+		} else {
+			this.spirit += addedSpirit;
+		}
 	}
 
 	public int getMental() {
@@ -71,7 +103,13 @@ public class Ability {
 		this.mental = mental;
 	}
 
-	public void addMental(int acceptedMental) {
-		this.mental += acceptedMental;
+	public void addMental(int addedMental) {
+		if (addedMental + this.mental > 80) {
+			this.mental = 80;
+		} else if (addedMental + this.mental < -80) {
+			this.mental = -80;
+		} else {
+			this.mental += addedMental;
+		}
 	}
 }
