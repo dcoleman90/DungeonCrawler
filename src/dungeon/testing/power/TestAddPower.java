@@ -1,8 +1,7 @@
-package dungeon.testing.ability;
+package dungeon.testing.power;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 import dungeon.model.Power;
