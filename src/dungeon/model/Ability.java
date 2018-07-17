@@ -30,51 +30,50 @@ public class Ability {
 	 *            = spirit
 	 * @param acceptedMental
 	 *            = mental
+	 *            
+	 * All parameters are capped at an 80/-80 
+	 * 
 	 */
 	public Ability(int acceptedPhysical, int acceptedSpirit, int acceptedMental) {
-		if (acceptedPhysical > 80) {
-			this.physical = 80;
-		} else if (acceptedPhysical < -80) {
-			this.physical = -80;
-		} else {
-			this.physical = acceptedPhysical;
-		}
-		
-		if (acceptedSpirit > 80) {
-			this.spirit = 80;
-		} else if (acceptedSpirit < -80) {
-			this.spirit = -80;
-		} else {
-			this.spirit = acceptedSpirit;
-		}
-		
-	if (acceptedMental > 80) {
-			this.mental = 80;
-		} else if (acceptedMental < -80) {
-			this.mental = -80;
-		} else {
-			this.mental = acceptedMental;
-		}
+		this.physical = this.parameterCheck(acceptedPhysical);
+		this.spirit = this.parameterCheck(acceptedSpirit);
+		this.mental = this.parameterCheck(acceptedMental);
 	}
 
 	//// Getter/Setters and adders which add the accepted value to the corresponding
 	//// ability
+	
+	public int parameterCheck(int acceptedValue) {
+		int returnedValue = 0;
+		if (acceptedValue > 80) {
+			returnedValue = 80;
+		} else if (acceptedValue < -80) {
+			returnedValue = -80;
+		} else {
+			returnedValue = acceptedValue;
+		}
+		return returnedValue;
+	}
+	
+	/**
+	 * Getter for physical
+	 * @return this.physical
+	 */
 	public int getPhysical() {
-		return physical;
+		return this.physical;
 	}
 
-	public void setPhysical(int physical) {
-		this.physical = physical;
+	/**
+	 * Setter for physical will not allow it to surpass 80
+	 * @param acceptedPhysical
+	 */
+	public void setPhysical(int acceptedPhysical) {
+		this.physical = this.parameterCheck(acceptedPhysical);
 	}
 
 	public void addPhysical(int addedPhysical) {
-		if (addedPhysical + this.physical > 80) {
-			this.physical = 80;
-		} else if (addedPhysical + this.physical < -80) {
-			this.physical = -80;
-		} else {
-			this.physical += addedPhysical;
-		}
+		this.physical += addedPhysical;
+		this.physical = this.parameterCheck(this.physical);
 	}
 
 	public int getSpirit() {
@@ -82,17 +81,12 @@ public class Ability {
 	}
 
 	public void setSpirit(int spirit) {
-		this.spirit = spirit;
+		this.spirit = this.parameterCheck(spirit);
 	}
 
 	public void addSpirit(int addedSpirit) {
-		if (addedSpirit + this.spirit > 80) {
-			this.spirit = 80;
-		} else if (addedSpirit + this.spirit < -80) {
-			this.spirit = -80;
-		} else {
-			this.spirit += addedSpirit;
-		}
+		this.spirit += addedSpirit;
+		this.spirit = this.parameterCheck(this.spirit);
 	}
 
 	public int getMental() {
@@ -100,16 +94,11 @@ public class Ability {
 	}
 
 	public void setMental(int mental) {
-		this.mental = mental;
+		this.mental = this.parameterCheck(mental);
 	}
 
 	public void addMental(int addedMental) {
-		if (addedMental + this.mental > 80) {
-			this.mental = 80;
-		} else if (addedMental + this.mental < -80) {
-			this.mental = -80;
-		} else {
-			this.mental += addedMental;
-		}
+		this.mental += addedMental;
+		this.mental = this.parameterCheck(this.mental);
 	}
 }
