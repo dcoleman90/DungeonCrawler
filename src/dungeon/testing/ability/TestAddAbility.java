@@ -2,101 +2,100 @@ package dungeon.testing.ability;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
-import dungeon.model.Power;
+import dungeon.model.Ability;
 
-class TestAddPower {
+class TestAddAbility {
 
 	/**
 	 * This test will check add ability from the default constructor
 	 */
 	@Test
-	void testDefaultConstructorAdd5PowerToAllShouldReturn6ForAll() {
-		Power powers = new Power();
-		powers.addForce(5);
-		powers.addIntellegence(5);
-		powers.addStrength(5);
-		assertEquals(6, powers.getStrength());
-		assertEquals(6, powers.getForce());
-		assertEquals(6, powers.getIntellegance());
+	void testDefaultConstructorAdd5AbilityToAllShouldReturn5ForAll() {
+		Ability abilitys = new Ability();
+		abilitys.addSpirit(5);
+		abilitys.addMental(5);
+		abilitys.addPhysical(5);
+		assertEquals(5, abilitys.getPhysical());
+		assertEquals(5, abilitys.getSpirit());
+		assertEquals(5, abilitys.getMental());
 	}
 
 	/**
 	 * This test will check add ability from the default constructor
 	 */
 	@Test
-	void testDefaultConstructorAdd15PowerToAllShouldReturn16ForAll() {
-		Power powers = new Power();
-		powers.addForce(15);
-		powers.addIntellegence(15);
-		powers.addStrength(15);
-		assertEquals(16, powers.getStrength());
-		assertEquals(16, powers.getForce());
-		assertEquals(16, powers.getIntellegance());
+	void testDefaultConstructorAdd15AbilityToAllShouldReturn15ForAll() {
+		Ability abilitys = new Ability();
+		abilitys.addSpirit(15);
+		abilitys.addMental(15);
+		abilitys.addPhysical(15);
+		assertEquals(15, abilitys.getPhysical());
+		assertEquals(15, abilitys.getSpirit());
+		assertEquals(15, abilitys.getMental());
 	}
 
 	/**
 	 * This test will check add ability from the three param constructor
 	 */
 	@Test
-	void test3ParamConstructorAdd5PowerToAllShouldReturn16ForAll() {
-		Power powers = new Power(11, 11, 11);
-		powers.addForce(5);
-		powers.addIntellegence(5);
-		powers.addStrength(5);
-		assertEquals(16, powers.getStrength());
-		assertEquals(16, powers.getForce());
-		assertEquals(16, powers.getIntellegance());
+	void test3ParamConstructorAdd5AbilityToAllShouldReturn16ForAll() {
+		Ability abilitys = new Ability(11, 11, 11);
+		abilitys.addSpirit(5);
+		abilitys.addMental(5);
+		abilitys.addPhysical(5);
+		assertEquals(16, abilitys.getPhysical());
+		assertEquals(16, abilitys.getSpirit());
+		assertEquals(16, abilitys.getMental());
 	}
 
 	/**
-	 * This test will check add ability from the default constructor adding power
+	 * This test will check add ability from the default constructor adding ability
 	 * twice
 	 */
 	@Test
-	void testDefaultConstructorAddPowerTwiceToForceShouldReturn686() {
-		Power powers = new Power();
-		powers.addForce(5);
-		powers.addIntellegence(5);
-		powers.addStrength(5);
-		powers.addForce(2);
-		assertEquals(6, powers.getStrength());
-		assertEquals(8, powers.getForce());
-		assertEquals(6, powers.getIntellegance());
+	void testDefaultConstructorAddAbilityTwiceToForceShouldReturn686() {
+		Ability abilitys = new Ability();
+		abilitys.addSpirit(5);
+		abilitys.addMental(5);
+		abilitys.addPhysical(5);
+		abilitys.addSpirit(2);
+		assertEquals(5, abilitys.getPhysical());
+		assertEquals(7, abilitys.getSpirit());
+		assertEquals(5, abilitys.getMental());
 	}
 
 	/**
 	 * This test will check add ability from the default constructor adding negative
-	 * power
+	 * ability
 	 */
 	@Test
-	void testDefaultConstructorAddNegitivePowerTwiceToForceShouldReturn626() {
-		Power powers = new Power();
-		powers.addForce(5);
-		powers.addIntellegence(5);
-		powers.addStrength(5);
-		powers.addForce(-4);
-		assertEquals(6, powers.getStrength());
-		assertEquals(2, powers.getForce());
-		assertEquals(6, powers.getIntellegance());
+	void testDefaultConstructorAddNegitiveAbilityTwiceToForceShouldReturn626() {
+		Ability abilitys = new Ability();
+		abilitys.addSpirit(5);
+		abilitys.addMental(5);
+		abilitys.addPhysical(5);
+		abilitys.addSpirit(-4);
+		assertEquals(5, abilitys.getPhysical());
+		assertEquals(1, abilitys.getSpirit());
+		assertEquals(5, abilitys.getMental());
 	}
 
 	/**
 	 * This test will check add ability from the default constructor adding negative
-	 * power should force the power to stop at 1
+	 * ability should force the ability to stop at 1
 	 */
 	@Test
-	void testDefaultConstructorAddNegitivePowerTwiceToForceShouldReturn611() {
-		Power powers = new Power();
-		powers.addForce(5);
-		powers.addIntellegence(5);
-		powers.addStrength(5);
-		powers.addForce(-10);
-		powers.addStrength(-55);
-		assertEquals(1, powers.getStrength());
-		assertEquals(1, powers.getForce());
-		assertEquals(6, powers.getIntellegance());
+	void testDefaultConstructorAddNegitiveAbilityTwiceToForceShouldReturn611() {
+		Ability abilitys = new Ability();
+		abilitys.addSpirit(5);
+		abilitys.addMental(5);
+		abilitys.addPhysical(5);
+		abilitys.addSpirit(-10);
+		abilitys.addPhysical(-55);
+		assertEquals(-50, abilitys.getPhysical());
+		assertEquals(-5, abilitys.getSpirit());
+		assertEquals(5, abilitys.getMental());
 	}
 }
