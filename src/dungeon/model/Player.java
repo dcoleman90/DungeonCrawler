@@ -1,7 +1,7 @@
 package dungeon.model;
 
 
-/**This class is the Player class it will
+/**This class is the Player class it will implment 
  * 
  * @author Drew Coleman
  *
