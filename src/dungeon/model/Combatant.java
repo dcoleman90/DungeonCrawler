@@ -14,7 +14,7 @@ public abstract class Combatant implements CombatantInterface {
 	private Power power;
 	private Random fate;
 	private int resultOfFate;
-	private String name;
+
 	
 	/**
 	 * This is the default constructor setting all values to their default states
@@ -25,7 +25,6 @@ public abstract class Combatant implements CombatantInterface {
 		this.power = new Power();
 		this.fate = new Random();
 		this.resultOfFate = this.fate.nextInt(100);
-		this.name = "Combatant";
 	}
 	
 	public Combatant(Health acceptedHP, Ability acceptedAbility, Power acceptedPower, String name) {
@@ -34,7 +33,6 @@ public abstract class Combatant implements CombatantInterface {
 		this.power = acceptedPower;
 		this.fate = new Random();
 		this.resultOfFate = this.fate.nextInt(100);
-		this.name = name;
 	}
 	
 	/**
@@ -72,7 +70,7 @@ public abstract class Combatant implements CombatantInterface {
 	 */
     public int getPhysicalDefence(){
     	int defence;
-    	defence = (this.resultOfFate / 2) + this.ability.getPhysical();
+    	defence = (this.getDefence()) + this.ability.getPhysical();
     	return defence;
     }
 	
@@ -81,7 +79,7 @@ public abstract class Combatant implements CombatantInterface {
 	 */
     public int getMentalDefense(){
     	int defence;
-    	defence = (this.resultOfFate / 2) + this.ability.getMental();
+    	defence = (this.getDefence()) + this.ability.getMental();
     	return defence;
     }
 	
@@ -90,8 +88,16 @@ public abstract class Combatant implements CombatantInterface {
 	 */
     public int getSpiritDefence(){
     	int defence;
-    	defence = (this.resultOfFate / 2) + this.ability.getSpirit();
+    	defence = (this.getDefence()) + this.ability.getSpirit();
     	return defence;
+    }
+    
+    /**
+     * This method gets number for defense for the three abilities
+     * @return 2/3 of this.resultOfFate
+     */
+    private int getDefence() {
+    	return (int)(this.resultOfFate * 0.66);
     }
 	
 	/**
@@ -122,15 +128,8 @@ public abstract class Combatant implements CombatantInterface {
 	 * Returns true if it is the players turn
 	 * @return true only if it is the players turn
 	 */
+    
    // public boolean getIsMyTurn(){}
-	
-	/**
-	 * returns the name
-	 * @return the Combatant's name
-	 */
-    public String getName(){
-    	return this.name;
-    }
 	
 	/**
 	 * returns amount of health
