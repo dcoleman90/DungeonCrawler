@@ -36,9 +36,9 @@ class TestPowerConstructors {
 	@Test
 	void test3ParamConstructorWithValuesOf0ResetsTo1() {
 		Power powers = new Power(0, 0, 0);
-		assertEquals(1, powers.getStrength());
-		assertEquals(1, powers.getForce());
-		assertEquals(1, powers.getIntellegance());
+		assertEquals(0, powers.getStrength());
+		assertEquals(0, powers.getForce());
+		assertEquals(0, powers.getIntellegance());
 	}
 
 	/**
@@ -48,9 +48,9 @@ class TestPowerConstructors {
 	@Test
 	void test3ParamConstructorWithNegitiveValuesResetsTo1() {
 		Power powers = new Power(-5, -10, -20);
-		assertEquals(1, powers.getStrength());
-		assertEquals(1, powers.getForce());
-		assertEquals(1, powers.getIntellegance());
+		assertEquals(0, powers.getStrength());
+		assertEquals(0, powers.getForce());
+		assertEquals(0, powers.getIntellegance());
 	}
 
 	/**
@@ -83,7 +83,7 @@ class TestPowerConstructors {
 	void test3ParamConstructorWithValuesOf5Neg1015() {
 		Power powers = new Power(5, -5, 15);
 		assertEquals(5, powers.getStrength());
-		assertEquals(1, powers.getForce());
+		assertEquals(0, powers.getForce());
 		assertEquals(15, powers.getIntellegance());
 	}
 }

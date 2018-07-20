@@ -77,9 +77,10 @@ class TestAddPower {
 		powers.addIntellegence(5);
 		powers.addStrength(5);
 		powers.addForce(-4);
+		powers.addIntellegence(-99);
 		assertEquals(6, powers.getStrength());
 		assertEquals(2, powers.getForce());
-		assertEquals(6, powers.getIntellegance());
+		assertEquals(0, powers.getIntellegance());
 	}
 
 	/**
@@ -94,8 +95,8 @@ class TestAddPower {
 		powers.addStrength(5);
 		powers.addForce(-10);
 		powers.addStrength(-55);
-		assertEquals(1, powers.getStrength());
-		assertEquals(1, powers.getForce());
+		assertEquals(0, powers.getStrength());
+		assertEquals(0, powers.getForce());
 		assertEquals(6, powers.getIntellegance());
 	}
 }

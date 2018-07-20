@@ -21,8 +21,12 @@ public class Player extends Combatant{
 		this.name = acceptedName;
 	}
 	
-	public Player(Health acceptedHP, Ability acceptedAbility, Power acceptedPower, String name) {
-		super(acceptedHP, acceptedAbility, acceptedPower, name);
+	public Player(Health acceptedHP, Ability acceptedAbility, Power acceptedPower, String acceptedName) {
+		super(acceptedHP, acceptedAbility, acceptedPower);
+		if (acceptedName == null) {
+			throw new IllegalArgumentException("The Player's name cannot be null");
+		}
+		this.name = acceptedName;
 	}
 	
 	/**

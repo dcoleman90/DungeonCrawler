@@ -2,6 +2,7 @@ package dungeon.model;
 
 /**
  * This class is the power class - it determines how effective attacks are
+ * 
  * @author Drew Coleman
  *
  */
@@ -18,73 +19,71 @@ public class Power {
 		this.force = 1;
 		this.intellegance = 1;
 	}
-	
+
 	public Power(int acceptedStrenght, int acceptedForce, int acceptedIntellegance) {
-		if(acceptedStrenght <= 0) {
-			this.strength = 1;
-		} else {
-			this.strength = acceptedStrenght;
-		}
-		
-		if(acceptedForce <= 0 ) {
-			this.force = 1;
-		} else {
-			this.force = acceptedForce;
-		}
-		
-		if (acceptedIntellegance <= 0) {
-			this.intellegance = 1;
-		} else {
-			this.intellegance = acceptedIntellegance;
-		}
+		this.strength = this.parameterCheck(acceptedStrenght);
+		this.force = this.parameterCheck(acceptedForce);
+		this.intellegance = this.parameterCheck(acceptedIntellegance);
 	}
 
-	/////////////Getters/Setters and Adders  
-	
+	private int parameterCheck(int acceptedValue) {
+		int returnedValue = 0;
+		if (acceptedValue < 1) {
+			returnedValue = 0;
+		} else {
+			returnedValue = acceptedValue;
+		}
+		return returnedValue;
+	}
+
+	/**
+	 * Getters/Setters and Adders
+	 * 
+	 * Getters perform as expected
+	 * 
+	 * Setters will not allow a negative value to be applied all negative values are
+	 * turned to one
+	 * 
+	 * Adders add the accepted value to the score - if the added value is negitive
+	 * AND would cause the value to equal 0 or less then the value is reset to 1
+	 */
+
 	public int getStrength() {
 		return strength;
 	}
 
-	public void setStrength(int strength) {
-		this.strength = strength;
+	public void setStrength(int addedStrength) {
+		this.strength = this.parameterCheck(addedStrength);
 	}
-	
+
 	public void addStrength(int addedStrength) {
-		if (addedStrength + this.strength <= 0) {
-			this.strength = 1;
-		} else {
-			this.strength += addedStrength;
-		}
+		this.strength += addedStrength;
+		this.strength = this.parameterCheck(this.strength);
 	}
 
 	public int getForce() {
 		return force;
 	}
 
-	public void setForce(int force) {
-		this.force = force;
+	public void setForce(int addedForce) {
+		this.force = this.parameterCheck(addedForce);
 	}
 
-	public void addForce(int addedForce) {
-		if (addedForce + this.force <= 0) {
-			this.force = 1;
-		} else {
-			this.force += addedForce;
-		}
+	public void addForce(int  addedForce) {
+		this.force += addedForce;
+		this.force = this.parameterCheck(this.force);
 	}
+
 	public int getIntellegance() {
 		return intellegance;
 	}
 
-	public void setIntellegance(int intellegance) {
-		this.intellegance = intellegance;
+	public void setIntellegance(int acceptedValue) {
+		this.intellegance = this.parameterCheck(acceptedValue);
 	}
-	
+
 	public void addIntellegence(int addedIntellegence) {
-		if (addedIntellegence + this.intellegance <= 0) {
-			this.intellegance = 1;
-		} else {
-			this.intellegance += addedIntellegence;
-		}
+		this.intellegance += addedIntellegence;
+		this.intellegance = this.parameterCheck(this.intellegance);
 	}
 }

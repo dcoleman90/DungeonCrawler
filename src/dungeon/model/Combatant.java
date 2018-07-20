@@ -23,16 +23,19 @@ public abstract class Combatant implements CombatantInterface {
 		this.hp = new Health();
 		this.ability = new Ability();
 		this.power = new Power();
-		this.fate = new Random();
-		this.resultOfFate = this.fate.nextInt(100);
+		this.resetFate();
 	}
 	
-	public Combatant(Health acceptedHP, Ability acceptedAbility, Power acceptedPower, String name) {
+	public Combatant(Health acceptedHP, Ability acceptedAbility, Power acceptedPower) {
 		this.hp = acceptedHP;
 		this.ability = acceptedAbility;
 		this.power = acceptedPower;
 		this.fate = new Random();
-		this.resultOfFate = this.fate.nextInt(100);
+		this.resetFate();
+	}
+	
+	public void resetFate() {
+		this.resultOfFate = new Random().nextInt(100) + 1;
 	}
 	
 	/**
@@ -40,9 +43,7 @@ public abstract class Combatant implements CombatantInterface {
 	 * @return 
 	 */
     public int attackPhysical(){
-    	int attack;
-    	attack = this.resultOfFate + this.ability.getPhysical();
-    	return attack;
+    	return this.getOffenceChance() + this.ability.getPhysical();
     } 
 	
 	/**
@@ -50,9 +51,7 @@ public abstract class Combatant implements CombatantInterface {
 	 * @return 
 	 */
     public int attackMental(){
-    	int attack;
-    	attack = this.resultOfFate + this.ability.getMental();
-    	return attack;
+    	return this.getOffenceChance() + this.ability.getMental();
     }
 	
 	/**
@@ -60,9 +59,7 @@ public abstract class Combatant implements CombatantInterface {
 	 * @return 
 	 */
     public int attackSpirit(){
-    	int attack;
-    	attack = this.resultOfFate + this.ability.getSpirit();
-    	return attack;
+    	return this.getOffenceChance() + this.ability.getSpirit();
     }
 	
 	/**
@@ -97,9 +94,29 @@ public abstract class Combatant implements CombatantInterface {
      * @return 2/3 of this.resultOfFate
      */
     private int getDefence() {
+    	this.resetFate();
     	return (int)(this.resultOfFate * 0.66);
     }
+    
+    private int getOffenceChance() {
+    	this.resetFate();
+    	return (int)(this.resultOfFate);
+    }
 	
+    
+    
+    public int getPhysical() {
+    	return this.ability.getPhysical();
+    }
+    
+    public int getMental() {
+    	return this.ability.getMental();
+    }
+    
+    public int getSpirit() {
+    	return this.ability.getSpirit();
+    } 
+    
 	/**
 	 * Physical Attack damage
 	 * @return strength
