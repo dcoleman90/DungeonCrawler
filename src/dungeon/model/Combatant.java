@@ -12,7 +12,6 @@ public abstract class Combatant implements CombatantInterface {
 	private Health hp;
 	private Ability ability;
 	private Power power;
-	private Random fate;
 	private int resultOfFate;
 
 	
@@ -30,7 +29,6 @@ public abstract class Combatant implements CombatantInterface {
 		this.hp = acceptedHP;
 		this.ability = acceptedAbility;
 		this.power = acceptedPower;
-		this.fate = new Random();
 		this.resetFate();
 	}
 	
